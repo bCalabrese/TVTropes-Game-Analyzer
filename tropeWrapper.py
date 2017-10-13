@@ -63,7 +63,8 @@ def getGameDict(tropeList,gameName):
     for i in tropeList:
         page = opener.open(i)
         soup = BeautifulSoup(page, 'html.parser')
-        for link in soup.findAll('a') :
+        for link in soup.findAll('a',href=True) :
+            print(link['href'])
             if 'tvtropes.org' in link['href'] and 'homepage' not in link['href'] :
                 temp = link['href']
                 if '.php/videogame' in temp.lower() and gameName not in temp :
